@@ -10,14 +10,12 @@ from google.oauth2.credentials import Credentials
 PROJECT = "handy-digit-507503-j3"
 ZONE = "us-west1-b"
 
-SNAPSHOT_NAME = "base-snapshot-lab5-vm"
+SNAPSHOT_NAME = "base-snapshot-lab5-vm-updated"
 MACHINE_TYPE = f"zones/{ZONE}/machineTypes/e2-medium"
 NETWORK = "global/networks/default"
 
 INSTANCE_NAMES = [
-    "lab5-clone-1",
-    "lab5-clone-2",
-    "lab5-clone-3",
+    "lab5-clone-new-3",
 ]
 
 
@@ -74,17 +72,12 @@ def create_instance(instance_name):
             }
         ],
         "networkInterfaces": [
-            {
-                "network": NETWORK,
-                "accessConfigs": [
-                    {
-                        "type": "ONE_TO_ONE_NAT",
-                        "name": "External NAT"
-                    }
-                ]
-            }
-        ]
+    		{
+        "network": NETWORK
+	    }
+	]
     }
+	
 
     print(f"Creating {instance_name}...")
 
@@ -120,6 +113,13 @@ def main():
     for instance_name, elapsed in timings:
         print(f"{instance_name}: {elapsed:.2f} seconds")
 
+        # Save timings to TIMING.md
+    with open("TIMING.md", "w") as f:
+        f.write("# Part 2 VM Creation Timing\n\n")
+        f.write("| Instance | Creation Time |\n")
+        f.write("|---|---:|\n")
+        for instance_name, elapsed in timings:
+            f.write(f"| {instance_name} | {elapsed:.2f} seconds |\n")
 
 if __name__ == "__main__":
     main()

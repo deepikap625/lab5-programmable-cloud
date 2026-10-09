@@ -2,6 +2,6 @@
 
 | Instance | Creation Time |
 |---|---:|
-| lab5-clone-1 | 26.84 seconds |
-| lab5-clone-2 | 28.47 seconds |
-| lab5-clone-3 | 28.49 seconds |
+| lab5-clone-new-1 | 48.06 seconds |
+| lab5-clone-new-2 | 26.58 seconds |
+| lab5-clone-new-3 | 25.40 seconds |
